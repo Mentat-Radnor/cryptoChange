@@ -32,17 +32,14 @@ import ExchangeBlock from "@/components/exchange/ExchangeBlock.vue";
 import { getCurrentChange } from "@/services/ServicesExchange";
 import { currency } from "../currency";
 
-interface ICurrency {
-  name: string;
-  total: number;
-}
+import { ICurrency } from "../types";
 
 const currencyValue: Array<ICurrency> = reactive([
   { name: currency[0], total: 1 },
   { name: currency[1], total: 0 },
 ]);
 
-const coversionRate: Ref<any> = ref(0);
+const coversionRate: Ref<number> = ref(0);
 
 (async () => {
   refreshCurrency();
@@ -58,7 +55,7 @@ async function getNewConversionRate() {
     data: { conversion_rate },
   } = await getCurrentChange(currencyValue[0].name, currencyValue[1].name);
 
-  coversionRate.value = (+conversion_rate).toFixed(2);
+  coversionRate.value = +(+conversion_rate).toFixed(2);
 }
 
 async function changeCurrency(index: number, value: string) {

@@ -45,9 +45,8 @@ function toggleMenu() {
   isOpen.value = !isOpen.value;
 }
 
-function changeValue(event: { target: { value: string } }) {
-  console.log(event.target.value);
-  emits("input", +event.target.value);
+function changeValue(event: Event) {
+  emits("input", +(event.target as HTMLInputElement).value);
 }
 function changeCurrency(value: string) {
   emits("change", value);

@@ -6,12 +6,12 @@
 </template>
 
 <script setup lang="ts">
-const porps = defineProps({ currency: { type: String, required: true } });
-
 import IconBTC from "@/components/icons/IconBTC.vue";
 import IconETH from "@/components/icons/IconETH.vue";
 import IconUSD from "@/components/icons/IconUSD.vue";
 import IconEUR from "@/components/icons/IconEUR.vue";
+
+const porps = defineProps({ currency: { type: String, required: true } });
 
 const icon = {
   btc: IconBTC,
